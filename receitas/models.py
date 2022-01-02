@@ -1,5 +1,5 @@
+from django.contrib.auth.models import User
 from django.db import models
-from pessoas.models import Pessoa
 
 
 # Create your models here.
@@ -62,15 +62,15 @@ class Receita(BaseModels):
         max_length=100,
     )
     pessoa = models.ForeignKey(
-        Pessoa,
+        User,
         on_delete=models.CASCADE,
         db_column='id_pessoa',
     )
     img = models.ImageField(
         upload_to='fotos/%d/%m/%Y',
-        blank=True,
+        blank=True
 
     )
 
     def __str__(self):
-       return self.nome_receita
+        return self.nome_receita
